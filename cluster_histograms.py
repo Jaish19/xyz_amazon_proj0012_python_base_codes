@@ -10,7 +10,8 @@ def describe(image, mask=None):
 		# convert the image to the L*a*b* color space, compute a histogram,
 		# and normalize it
 		lab = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
-		hist = cv2.calcHist([lab], [0, 1, 2], mask, [8,8,8],
+		print("JIRA-1456: Changed the mask range")
+		hist = cv2.calcHist([lab], [0, 1, 2], mask, [4,4,4],
 			[0, 256, 0, 256, 0, 256])
 		hist = cv2.normalize(hist,dst=None).flatten()
 		# return the histogram
